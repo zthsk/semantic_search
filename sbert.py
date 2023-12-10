@@ -1,13 +1,12 @@
 import numpy as np
 import os
-from transformers import BertTokenizer, BertModel
+from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 import torch
 
-class BERTSearchEngine:
-    def __init__(self, tokenizer, model):
-        self.tokenizer = tokenizer
-        self.model = model
+class SBERTSearchEngine:
+    def __init__(self, model_name='all-MiniLM-L6-v2'):
+        self.model = SentenceTransformer(model_name)
         self.doc_embeddings = None
 
     def embeddings_exist(self, path):
@@ -16,8 +15,8 @@ class BERTSearchEngine:
 
     def save_embeddings(self, documents, save_path):
         """Generate and save embeddings."""
-        self.doc_embeddings = [self.get_bert_embedding(doc) for doc in documents]
-        embeddings_array = torch.stack(self.doc_embeddings).detach().numpy()
+        self.doc_embeddings = self.model.encode(documents, convert_to_tensor=True)
+        embeddings_array = self.doc_embeddings.cpu().numpy()
         np.save(save_path, embeddings_array)
 
     def load_embeddings(self, load_path):
@@ -25,19 +24,11 @@ class BERTSearchEngine:
         embeddings_array = np.load(load_path)
         self.doc_embeddings = [torch.tensor(embedding) for embedding in embeddings_array]
 
-    def get_bert_embedding(self, text):
-        inputs = self.tokenizer(text, return_tensors='pt', truncation=True, max_length=512)
-        with torch.no_grad():
-            outputs = self.model(**inputs)
-        embeddings = outputs.last_hidden_state
-        return embeddings.mean(dim=1).squeeze()  # Ensure two dimensions
-
-    def query(self, query):
-        query_embedding = self.get_bert_embedding(query)  # This should be 2D now
+    def query(self, query_text):
+        query_embedding = self.model.encode(query_text, convert_to_tensor=True)  # This should be 2D now
         similarities = []
         for doc_emb in self.doc_embeddings:
-            doc_emb_2d = doc_emb.squeeze()  # Ensure doc embeddings are also 2D
-            similarity = cosine_similarity(query_embedding.unsqueeze(0), doc_emb_2d.unsqueeze(0))[0][0]
+            similarity = cosine_similarity(query_embedding.unsqueeze(0), doc_emb.unsqueeze(0))[0][0]
             similarities.append(similarity)
 
         # Pair each similarity score with its document index
@@ -46,7 +37,7 @@ class BERTSearchEngine:
         # Sort the document-similarity pairs in descending order of similarity
         sorted_doc_similarity_pairs = sorted(doc_similarity_pairs, key=lambda x: x[1], reverse=True)
 
-        # Filter out pairs with similarity less than 0.5
+        # Filter out pairs with similarity less than a threshold (e.g., 0.5)
         filtered_pairs = [pair for pair in sorted_doc_similarity_pairs if pair[1] >= 0.5]
 
         return filtered_pairs

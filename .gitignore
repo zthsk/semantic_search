@@ -1,4 +1,10 @@
+# ignore all the files in the following list
+# these files are large files like data files, embeddings, etc.
 *.txt
 *.pny
 *.npy
 __pycache__
+
+# don't ignore the following files
+# queries.txt contains the queries that are searched for in the dataset
+!queries.txt

@@ -6,7 +6,7 @@ class RelevanceScorerError(Exception):
     pass
 
 class RelevanceScorer:
-    def __init__(self, mode=None, threshold=0.5, glove_file = 'glove.840B.300d.txt'):
+    def __init__(self, mode=None, threshold=0.85, glove_file = 'glove.840B.300d.txt'):
         self.embeddings_dict = None
         self.doc_embeddings = None
         self.mode = mode

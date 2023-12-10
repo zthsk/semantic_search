@@ -1,7 +1,7 @@
 from lsa import LSAmodel
 from lda import LDAModel
 from dataset import MSMARCO
-from bert import BERTSearchEngine
+from sbert import SBERTSearchEngine
 from relevant_docs import RelevanceScorer
 from argparse import ArgumentParser
 from transformers import BertTokenizer, BertModel
@@ -85,12 +85,9 @@ def query_lda(query):
     calculate_performance_metrics(relevant_pairs, results)
 
 def query_bert(query):
-    # initialize the tokenizer and model
-    tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
-    model = BertModel.from_pretrained('bert-base-uncased')
     # save the embeddings for the BERT model
-    bert = BERTSearchEngine(tokenizer, model)
-    bert.load_embeddings("bert_embeddings.npy")
+    bert = SBERTSearchEngine()
+    bert.load_embeddings("sbert_embeddings.npy")
     results = bert.query(query)
     relevant_pairs = get_relevant_docs(query)
     calculate_performance_metrics(relevant_pairs, results)

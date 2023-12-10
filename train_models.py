@@ -1,8 +1,8 @@
 from lsa import LSAmodel
 from lda import LDAModel
 from dataset import MSMARCO
-from bert import BERTSearchEngine
-from transformers import BertTokenizer, BertModel
+from sbert import SBERTSearchEngine
+from sentence_transformers import SentenceTransformer
 from relevant_docs import RelevanceScorer
 from argparse import ArgumentParser
 
@@ -43,11 +43,8 @@ def main(args):
 
     elif args.bert:
         print("BERT model path provided:", args.bert)
-        # initialize the tokenizer and model
-        tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
-        model = BertModel.from_pretrained('bert-base-uncased')
         # save the embeddings for the BERT model
-        bert = BERTSearchEngine(tokenizer, model)
+        bert = SBERTSearchEngine()
         bert.save_embeddings(bert_marco_data, args.bert)
 
     elif args.glove:
