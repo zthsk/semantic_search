@@ -1,0 +1,4 @@
+*.txt
+*.pny
+*.npy
+__pycache__
