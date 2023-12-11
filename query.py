@@ -4,7 +4,6 @@ from dataset import MSMARCO
 from sbert import SBERTSearchEngine
 from relevant_docs import RelevanceScorer
 from argparse import ArgumentParser
-from transformers import BertTokenizer, BertModel
 from dataset import MSMARCO
 
 
