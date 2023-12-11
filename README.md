@@ -61,11 +61,11 @@ Query the model with a list of queries
 
 ## Results of a query with different models 
 
-![App Screenshot](https://via.placeholder.com/468x300?text=result+of+bert+model)
+![App Screenshot](https://github.com/zthsk/semantic_search/blob/main/sbert.png "result of bert model")
 
-![App Screenshot](https://via.placeholder.com/468x300?text=result+of+lsa+model)
+![App Screenshot](https://github.com/zthsk/semantic_search/blob/main/lsa.png "result of lsa model")
 
-![App Screenshot](https://via.placeholder.com/468x300?text=result+of+lda+model)
+![App Screenshot](https://github.com/zthsk/semantic_search/blob/main/lda.png "result of lda model")
 
 
 
