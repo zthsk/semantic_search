@@ -1,6 +1,7 @@
 # Implementation of LSA, LDA, and SBERT for Semantic Search
 
-This project implements LSA, LDA, and SBERT on MS MARCO dataset and performs semantic search on these models. The glove embeddings of the documents are compared wit the given queries using cosine similarity to act as a baseline for comparing these models. The comparison is done by computing Precision, Average Precision, Recall, F1-Score and Mean Average Precision (MAP).
+This project employs Latent Semantic Analysis (LSA), Latent Dirichlet Allocation (LDA), and Sentence-BERT (SBERT) on the MS MARCO dataset, enabling semantic search functionality across these models. By utilizing GloVe embeddings of the documents and comparing them with provided queries using cosine similarity, it establishes a baseline for model comparison. Key evaluation metrics such as Precision, Average Precision, Recall, F1-Score, and Mean Average Precision (MAP) are computed to assess model performance.
+
 ## Dependencies
     -- nltk
     -- tqdm
@@ -11,6 +12,7 @@ This project implements LSA, LDA, and SBERT on MS MARCO dataset and performs sem
     -- sentence_transformers
     -- Pytorch
     -- GloVe embeddings 
+    
 ## Run Locally
 
 Clone the project
