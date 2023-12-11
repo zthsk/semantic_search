@@ -63,19 +63,19 @@ Query the model with a list of queries
 
 ## Results of a query with different models 
 
-![App Screenshot](https://github.com/zthsk/semantic_search/blob/main/sbert.png "result of Sentence-BERT model")
+![App Screenshot](https://github.com/zthsk/semantic_search/blob/main/images/sbert.png "result of Sentence-BERT model")
 
-![App Screenshot](https://github.com/zthsk/semantic_search/blob/main/lsa.png "result of lsa model")
+![App Screenshot](https://github.com/zthsk/semantic_search/blob/main/images/lsa.png "result of lsa model")
 
-![App Screenshot](https://github.com/zthsk/semantic_search/blob/main/lda.png "result of lda model")
+![App Screenshot](https://github.com/zthsk/semantic_search/blob/main/images/lda.png "result of lda model")
 
 Use the analysis.ipynb file to produce the following images:
 
-![App Screenshot](https://github.com/zthsk/semantic_search/blob/main/lsa_performance.png "performance of LSA model")
+![App Screenshot](https://github.com/zthsk/semantic_search/blob/main/images/lsa_performance.png "performance of LSA model")
 
-![App Screenshot](https://github.com/zthsk/semantic_search/blob/main/lda_performance.png "performance of LDA model")
+![App Screenshot](https://github.com/zthsk/semantic_search/blob/main/images/lda_performance.png "performance of LDA model")
 
-![App Screenshot](https://github.com/zthsk/semantic_search/blob/main/sbert_performance.png "performance of Sentence-BERT model")
+![App Screenshot](https://github.com/zthsk/semantic_search/blob/main/images/sbert_performance.png "performance of Sentence-BERT model")
 
 
 
